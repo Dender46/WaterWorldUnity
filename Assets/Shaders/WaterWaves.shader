@@ -14,12 +14,12 @@ Shader "Custom/WaterWaves"
     SubShader
     {
         // CREATED FROM TUTORIAL https://catlikecoding.com/unity/tutorials/flow/waves/
-        Tags { "RenderType"="Opaque" }
+        Tags { "RenderType"="Transparent" "Queue"="Transparent" }
         LOD 200
 
         CGPROGRAM
         // Physically based Standard lighting model, and enable shadows on all light types
-        #pragma surface surf Standard fullforwardshadows vertex:vert addshadow
+        #pragma surface surf Standard alpha vertex:vert
 
         // Use shader model 3.0 target, to get nicer looking lighting
         #pragma target 3.0
@@ -96,5 +96,5 @@ Shader "Custom/WaterWaves"
         }
         ENDCG
     }
-    FallBack "Diffuse"
+    // FallBack "Diffuse"
 }
