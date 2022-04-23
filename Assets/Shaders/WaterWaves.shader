@@ -1,4 +1,4 @@
-Shader "Custom/SurfaceShader"
+Shader "Custom/WaterWaves"
 {
     Properties
     {
@@ -47,7 +47,8 @@ Shader "Custom/SurfaceShader"
         void vert (inout appdata_full vertexData)
         {
             float3 p = vertexData.vertex.xyz;
-            p.y = _Amplitude * sin(p.x / _Wavelength + _Time.y * _Speed);
+            //p.y = _Amplitude * sin(p.x / _Wavelength + _Time.y * _Speed);
+            p.y = _Amplitude * sin(p.x / _Wavelength + _Time.y) + _Amplitude * sin(p.z / _Wavelength + _Time.y);
             vertexData.vertex.xyz = p;
         }
 
