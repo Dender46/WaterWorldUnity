@@ -64,11 +64,12 @@ Shader "Custom/WaterWaves"
 				-d.y * d.y * (steepness * sin(f))
 			);
 			return float3(
-				d.x * (a * cos(f)),
+				d.x,// * (a * cos(f)),
 				a * sin(f),
-				d.y * (a * cos(f))
+				d.y// * (a * cos(f))
 			);
 		}
+
         void vert (inout appdata_full vertexData)
         {
             float3 gridPoint = vertexData.vertex.xyz;

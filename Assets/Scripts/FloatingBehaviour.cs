@@ -17,11 +17,11 @@ public class FloatingBehaviour : MonoBehaviour
     {
         rb.AddForceAtPosition(Physics.gravity / countOfFloaters, transform.position, ForceMode.Acceleration);
 
-        float waveHeight = WaveManager.instance.GetWaveHeight(transform.position.x, transform.position.z);
-        if (transform.position.y < waveHeight)
+        Vector3 waveHeight = WaveManager.instance.GetWaveHeight(transform.position.x, transform.position.z);
+        if (transform.position.y < waveHeight.y)
         {
             isSubmerged = true;
-            displacementMultiplier = Mathf.Clamp01((waveHeight - transform.position.y) / depthBeforeSubmerged) * displacementAmount;
+            displacementMultiplier = Mathf.Clamp01((waveHeight.y - transform.position.y) / depthBeforeSubmerged) * displacementAmount;
             rb.AddForceAtPosition(Vector3.up * Mathf.Abs(Physics.gravity.y) * displacementMultiplier, transform.position, ForceMode.Acceleration);
             
             rb.AddForce(displacementMultiplier * -rb.velocity * waterDrag * Time.fixedDeltaTime, ForceMode.VelocityChange);
